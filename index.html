@@ -8,105 +8,210 @@
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+
   <!-- Google Fonts: Poppins -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
     body {
       font-family: 'Poppins', sans-serif;
     }
-    /* Smooth scrolling for anchor links */
+    /* Smooth scrolling */
     html {
       scroll-behavior: smooth;
     }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #5a1620;
+      border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #3b0d14;
+    }
   </style>
 </head>
-<body class="bg-[#f6f1ec] text-gray-800">
+<body class="bg-[#f6f1ec] text-gray-800 relative">
 
 <!-- ================= NAVBAR ================= -->
 <header class="bg-gradient-to-r from-[#3b0d14] to-[#5a1620] text-white sticky top-0 z-50 shadow-lg">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-    <div>
-      <h1 class="text-xl font-bold tracking-wide">ORO CONSTELLA</h1>
-      <p class="text-xs text-yellow-400 uppercase tracking-wider">Sushant Golf City, Lucknow</p>
-    </div>          
+  <div class="max-w-7xl mx-auto px-6 py-1 flex items-center justify-between">
+    
+    <!-- Logo Section -->
+    <div class="flex items-center gap-3">
+      <!-- Reverted to original local logo image -->
+      <img src="logo.png"
+           alt="Oro Constella Logo"
+           class="w-16 h-16 object-contain">
+      <div>
+        <h1 class="text-xl text-oro-maroon font-bold tracking-wide leading-tight">
+          ORO CONSTELLA
+        </h1>
+        <p class="text-[10px] text-yellow-400 uppercase tracking-wider">
+          Preferred Partner
+        </p>
+      </div>
+    </div>
 
-    <nav class="hidden md:flex gap-8 text-sm font-medium flex-1 justify-center">
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex gap-8 text-sm font-medium flex-1 justify-center items-center">
       <a href="#" class="hover:text-yellow-400 transition-colors">Home</a>
       <a href="#about" class="hover:text-yellow-400 transition-colors">About us</a>
       <a href="#floor-plans" class="hover:text-yellow-400 transition-colors">Floor Plans</a>
       <a href="#location" class="hover:text-yellow-400 transition-colors">Location</a>
       <a href="#gallery" class="hover:text-yellow-400 transition-colors">Gallery</a>
-      <a href="brochure.pdf" download class="hover:text-yellow-400 transition-colors">
-                        <i class="fa fa-download"></i> Download Brochure
-                    </a>
+
+      <!-- Download Brochure (Fixed Animation) -->
+      <a href="brochure.pdf" download
+         class="font-semibold text-yellow-400
+                transition-all duration-300
+                hover:text-white flex items-center gap-2 group">
+        <!-- Only the icon bounces now -->
+        <i class="fa fa-download group-hover:animate-bounce"></i> 
+        Download Brochure
+      </a>
     </nav>
 
-    <button onclick="openModal()" class="bg-yellow-500 hover:bg-yellow-400 text-[#3b0d14] px-5 py-2 rounded-md font-bold transition-colors shadow-md">
-      Enquire Now
-    </button>
+    <!-- Enquire Button & Mobile Toggle -->
+    <div class="flex items-center gap-4">
+      <button onclick="openModal()" class="hidden md:block bg-yellow-500 hover:bg-yellow-400 text-[#3b0d14] px-5 py-2 rounded-md font-bold transition-colors shadow-md">
+        Enquire Now
+      </button>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="md:hidden text-2xl text-yellow-400 focus:outline-none">
+        <i class="fa fa-bars"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Dropdown -->
+  <div id="mobile-menu" class="hidden md:hidden bg-[#3b0d14] border-t border-white/10">
+    <div class="flex flex-col p-4 space-y-4">
+      <a href="#" class="hover:text-yellow-400" onclick="toggleMobileMenu()">Home</a>
+      <a href="#about" class="hover:text-yellow-400" onclick="toggleMobileMenu()">About us</a>
+      <a href="#floor-plans" class="hover:text-yellow-400" onclick="toggleMobileMenu()">Floor Plans</a>
+      <a href="#location" class="hover:text-yellow-400" onclick="toggleMobileMenu()">Location</a>
+      <a href="#gallery" class="hover:text-yellow-400" onclick="toggleMobileMenu()">Gallery</a>
+      <button onclick="openModal(); toggleMobileMenu()" class="bg-yellow-500 text-[#3b0d14] py-2 rounded font-bold">
+        Enquire Now
+      </button>
+    </div>
   </div>
 </header>
 
 <!-- ================= HERO ================= -->
-<section class="relative h-[600px]">
-  <!-- Placeholder for Hero Image -->
-  <img src="https://res.cloudinary.com/g5-assets-cld/image/upload/x_0,y_491,h_4413,w_7356,c_crop/q_auto,f_auto,fl_lossy,g_center,h_1200,w_2000/g5/g5-c-5g13txeqo-mark-taylor-companies-client/g5-cl-1j73ew2zby-the-core-scottsdale/uploads/DSC_7198-Edit-2_1_n06pxw.jpg" 
+<section class="relative h-[650px] flex items-center">
+  <!-- Hero Background Image: Reverted to flat1.png -->
+  <img src="flat1.png" 
        alt="Luxury Apartment Building" 
-       class="w-full h-full object-cover" />
+       class="absolute inset-0 w-full h-full object-cover" />
 
-  <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30"></div>
+  <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
 
-  <div class="absolute inset-0 flex items-center">
-    <div class="max-w-7xl mx-auto px-6 w-full grid md:grid-cols-2 gap-10 items-center">
+  <div class="relative max-w-7xl mx-auto px-6 w-full grid md:grid-cols-2 gap-10 items-center">
 
-      <!-- Text -->
-      <div class="text-white space-y-6">
-        <div class="inline-block bg-yellow-500 text-[#3b0d14] px-3 py-1 rounded text-sm font-bold">
-          Launching Soon
-        </div>
-        <h2 class="text-5xl md:text-6xl font-bold leading-tight">
-          3 & 4.5 BHK <br/>
-          <span class="text-yellow-400">Luxury Apartments</span>
-        </h2>
-        <p class="text-lg md:text-xl text-gray-200 font-light">
-          Experience premium living in the heart of Sushant Golf City, Lucknow.
-        </p>
-
-        <div class="flex flex-wrap gap-4 pt-4">
-          <button onclick="openModal()" class="bg-yellow-500 hover:bg-yellow-400 text-[#3b0d14] px-8 py-3 rounded-md font-bold transition-transform transform hover:-translate-y-1 shadow-lg">
-            Get Price List
-          </button>
-          <button onclick="openModal()" class="bg-white/10 backdrop-blur-sm border border-white text-white hover:bg-white hover:text-[#3b0d14] px-8 py-3 rounded-md font-semibold transition-all">
-            Book Site Visit
-          </button>
-        </div>
+    <!-- Text -->
+    <div class="text-white space-y-6 pt-10 md:pt-0">
+      <div class="inline-block bg-yellow-500 text-[#3b0d14] px-3 py-1 rounded text-sm font-bold shadow-lg">
+        Launching Soon
       </div>
+      <h2 class="text-4xl md:text-6xl font-bold leading-tight">
+        3 & 4.5 BHK <br/>
+        <span class="text-yellow-400">Luxury Apartments</span>
+      </h2>
+      <p class="text-lg md:text-xl text-gray-200 font-light max-w-lg">
+        Experience premium living in the heart of Sushant Golf City, Lucknow.
+      </p>
 
-      <!-- Hero Form -->
-      <div class="bg-white rounded-xl shadow-2xl p-8 max-w-md ml-auto hidden md:block border-t-4 border-yellow-500">
-        <h3 class="text-2xl font-bold text-[#5a1620] mb-2">
-          Get Instant Details
-        </h3>
-        <p class="text-sm text-gray-500 mb-6">Register now to avail inaugural offers.</p>
-
-        <form id="hero-form" class="space-y-4">
-          <input type="text" name="Name" placeholder="Name" required
-            class="w-full border border-gray-300 p-3 rounded focus:outline-none focus:border-[#5a1620] transition-colors"/>
-
-          <input type="tel" name="Phone" placeholder="Mobile Number" required
-            class="w-full border border-gray-300 p-3 rounded focus:outline-none focus:border-[#5a1620] transition-colors"/>
-
-          <button type="submit" class="w-full bg-[#5a1620] hover:bg-[#3b0d14] text-white py-3 rounded font-bold uppercase tracking-wide transition-colors">
-            Request Call Back
-          </button>
-        </form>
+      <div class="flex flex-wrap gap-4 pt-4">
+        <button onclick="openModal()" class="bg-yellow-500 hover:bg-yellow-400 text-[#3b0d14] px-8 py-3 rounded-md font-bold transition-transform transform hover:-translate-y-1 shadow-lg">
+          Get Price List
+        </button>
+        <button onclick="openModal()" class="bg-white/10 backdrop-blur-md border border-white text-white hover:bg-white hover:text-[#3b0d14] px-8 py-3 rounded-md font-semibold transition-all">
+          Book Site Visit
+        </button>
       </div>
-
     </div>
+
+    <!-- Hero Form (Fixed Labels) -->
+    <div class="bg-white rounded-xl shadow-2xl p-8 max-w-sm ml-auto hidden md:block border-t-4 border-yellow-500 relative z-10">
+      <h3 class="text-2xl font-bold text-[#5a1620] mb-2">
+        Get Instant Details
+      </h3>
+      <p class="text-sm text-gray-500 mb-6">
+        Register now to avail inaugural offers.
+      </p>
+
+      <form id="hero-form" class="space-y-5">
+
+        <!-- Name Field -->
+        <div class="relative group">
+          <input
+            type="text"
+            name="Name"
+            id="hero-name"
+            required
+            placeholder=" "
+            class="peer w-full border border-gray-300 p-3 rounded bg-white
+                   focus:outline-none focus:border-[#5a1620] focus:ring-1 focus:ring-[#5a1620]"
+          />
+          <!-- 
+             FIXED LABEL LOGIC:
+             1. Base classes (active state): -top-2.5, text-xs, text-[#5a1620], bg-white
+             2. peer-placeholder-shown (empty state): top-3.5, text-base, text-gray-400
+             3. peer-focus (focus state): -top-2.5, text-xs, text-[#5a1620]
+          -->
+          <label
+            for="hero-name"
+            class="absolute left-3 -top-2.5 bg-white px-1 transition-all duration-200 pointer-events-none
+                   text-xs text-[#5a1620] font-medium
+                   peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:font-normal
+                   peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-[#5a1620] peer-focus:font-medium">
+            Name*
+          </label>
+        </div>
+
+        <!-- Phone Field -->
+        <div class="relative group">
+          <input
+            type="tel"
+            name="Phone"
+            id="hero-phone"
+            required
+            placeholder=" "
+            class="peer w-full border border-gray-300 p-3 rounded bg-white
+                   focus:outline-none focus:border-[#5a1620] focus:ring-1 focus:ring-[#5a1620]"
+          />
+          <label
+            for="hero-phone"
+            class="absolute left-3 -top-2.5 bg-white px-1 transition-all duration-200 pointer-events-none
+                   text-xs text-[#5a1620] font-medium
+                   peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:font-normal
+                   peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-[#5a1620] peer-focus:font-medium">
+            Mobile Number*
+          </label>
+        </div>
+
+        <!-- Button -->
+        <button
+          type="submit"
+          class="w-full bg-[#5a1620] hover:bg-[#3b0d14] text-white py-3 rounded
+                 font-bold uppercase tracking-wide transition-colors shadow-lg">
+          Request Call Back
+        </button>
+      </form>
+    </div>
+
   </div>
 </section>
 
@@ -114,7 +219,7 @@
 <section id="about" class="py-20 bg-white">
   <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
 
-    <div class="space-y-6">
+    <div class="space-y-6 order-2 md:order-1">
       <h2 class="text-3xl md:text-4xl font-bold text-[#5a1620]">
         About Oro Constella
       </h2>
@@ -129,16 +234,17 @@
         elite comfort. From spacious interiors to world-class amenities, your dream home awaits.
       </p>
       
-      <button class="text-[#5a1620] font-bold border-b-2 border-[#5a1620] hover:text-yellow-600 hover:border-yellow-600 transition-colors pb-1">
-        Read More
+      <button onclick="openModal()" class="text-[#5a1620] font-bold border-b-2 border-[#5a1620] hover:text-yellow-600 hover:border-yellow-600 transition-colors pb-1 inline-flex items-center gap-2">
+        Download Brochure <i class="fa fa-arrow-right text-sm"></i>
       </button>
     </div>
 
-    <div class="relative">
+    <div class="relative order-1 md:order-2">
       <div class="absolute -inset-4 bg-yellow-500/20 rounded-xl transform rotate-3"></div>
-      <img src="https://images.unsplash.com/photo-1574362848149-11496d93a7c7?q=80&w=1984&auto=format&fit=crop" 
+      <!-- Reverted to flat2.png -->
+      <img src="flat2.png" 
            alt="Building Exterior" 
-           class="relative rounded-xl shadow-2xl w-full object-cover h-[400px]"/>
+           class="relative rounded-xl shadow-2xl w-full object-cover h-[400px] hover:scale-[1.01] transition-transform duration-500"/>
     </div>
   </div>
 </section>
@@ -155,26 +261,34 @@
 
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
       <!-- Amenity 1 -->
-      <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow text-center group cursor-pointer">
-        <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">🏊‍♂️</div>
+      <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 text-center group cursor-pointer border-b-4 border-transparent hover:border-yellow-500">
+        <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300 bg-red-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto text-[#5a1620]">
+            <i class="fa-solid fa-person-swimming"></i>
+        </div>
         <h3 class="text-lg font-bold text-[#5a1620]">Swimming Pool</h3>
         <p class="text-sm text-gray-500 mt-2">Lap pool & kids pool</p>
       </div>
       <!-- Amenity 2 -->
-      <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow text-center group cursor-pointer">
-        <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">🧒</div>
+      <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 text-center group cursor-pointer border-b-4 border-transparent hover:border-yellow-500">
+        <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300 bg-red-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto text-[#5a1620]">
+            <i class="fa-solid fa-child-reaching"></i>
+        </div>
         <h3 class="text-lg font-bold text-[#5a1620]">Kid’s Play Area</h3>
         <p class="text-sm text-gray-500 mt-2">Safe & engaging</p>
       </div>
       <!-- Amenity 3 -->
-      <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow text-center group cursor-pointer">
-        <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">🏋️</div>
+      <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 text-center group cursor-pointer border-b-4 border-transparent hover:border-yellow-500">
+        <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300 bg-red-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto text-[#5a1620]">
+            <i class="fa-solid fa-dumbbell"></i>
+        </div>
         <h3 class="text-lg font-bold text-[#5a1620]">Gymnasium</h3>
         <p class="text-sm text-gray-500 mt-2">Fully equipped</p>
       </div>
       <!-- Amenity 4 -->
-      <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow text-center group cursor-pointer">
-        <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">🏃</div>
+      <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 text-center group cursor-pointer border-b-4 border-transparent hover:border-yellow-500">
+        <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300 bg-red-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto text-[#5a1620]">
+            <i class="fa-solid fa-person-running"></i>
+        </div>
         <h3 class="text-lg font-bold text-[#5a1620]">Jogging Track</h3>
         <p class="text-sm text-gray-500 mt-2">Lush green path</p>
       </div>
@@ -201,22 +315,18 @@
       
       <!-- Floor Item 1 -->
       <div class="group relative rounded-xl overflow-hidden shadow-lg border border-gray-100 bg-gray-50">
-        <!-- Image Container -->
-        <div class="aspect-[4/3] overflow-hidden">
+        <div class="aspect-[4/3] overflow-hidden bg-white">
+            <!-- Reverted to floor-plan1.png -->
             <img src="floor-plan1.png" 
                alt="3 BHK Floor Plan" 
-               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+               class="blur-sm h-full object-cover transition-all duration-500 group-hover:scale-105 group-hover:blur-sm"
                loading="lazy">
         </div>
-        
-        <!-- Content below image -->
-        <div class="p-4 bg-white">
-            <h3 class="text-lg font-bold text-[#5a1620]">Ground Floor plan</h3>
-            <!-- <p class="text-sm text-gray-500">1850 Sq. Ft.</p> -->
+        <div class="p-4 bg-white border-t">
+            <h3 class="text-lg font-bold text-[#5a1620]">3 BHK Premium</h3>
+            <p class="text-sm text-gray-500">1850 Sq. Ft.</p>
         </div>
-
-        <!-- Overlay with Button (appears on hover) -->
-        <div class="absolute inset-0 bg-[#5a1620]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+        <div class="absolute inset-0 bg-[#5a1620]/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
           <button onclick="openModal()" class="bg-yellow-500 hover:bg-white hover:text-[#5a1620] text-[#3b0d14] font-bold py-3 px-6 rounded-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-xl">
             View Floor Plan
           </button>
@@ -225,18 +335,18 @@
 
       <!-- Floor Item 2 -->
       <div class="group relative rounded-xl overflow-hidden shadow-lg border border-gray-100 bg-gray-50">
-        <div class="aspect-[4/3] overflow-hidden">
-            <img src="floor-plan2.png"  
+        <div class="aspect-[4/3] overflow-hidden bg-white">
+             <!-- Reverted to floor-plan2.png -->
+             <img src="floor-plan2.png"  
                alt="4 BHK Floor Plan" 
-               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+               class="w-full h-full object-cover transition-all duration-500 blur-sm group-hover:scale-105 group-hover:blur-sm"
                loading="lazy">
         </div>
-        <div class="p-4 bg-white">
-            <h3 class="text-lg font-bold text-[#5a1620]">Floors Plans</h3>
-            <!-- <p class="text-sm text-gray-500">2450 Sq. Ft.</p> -->
+        <div class="p-4 bg-white border-t">
+            <h3 class="text-lg font-bold text-[#5a1620]">4 BHK Luxury</h3>
+            <p class="text-sm text-gray-500">2450 Sq. Ft.</p>
         </div>
-
-        <div class="absolute inset-0 bg-[#5a1620]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+        <div class="absolute inset-0 bg-[#5a1620]/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
           <button onclick="openModal()" class="bg-yellow-500 hover:bg-white hover:text-[#5a1620] text-[#3b0d14] font-bold py-3 px-6 rounded-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-xl">
             View Floor Plan
           </button>
@@ -245,18 +355,18 @@
 
       <!-- Floor Item 3 -->
       <div class="group relative rounded-xl overflow-hidden shadow-lg border border-gray-100 bg-gray-50">
-        <div class="aspect-[4/3] overflow-hidden">
-            <img src="floor-plan3.png" 
+        <div class="aspect-[4/3] overflow-hidden bg-white">
+             <!-- Reverted to floor-plan3.png -->
+             <img src="floor-plan3.png" 
                alt="4.5 BHK Penthouse Floor Plan" 
-               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+               class="w-full h-full object-cover transition-all duration-500 blur-sm group-hover:scale-105 group-hover:blur-sm"
                loading="lazy">
         </div>
-        <div class="p-4 bg-white">
-            <h3 class="text-lg font-bold text-[#5a1620]">Floors Plan</h3>
-            <!-- <p class="text-sm text-gray-500">3200 Sq. Ft.</p> -->
+        <div class="p-4 bg-white border-t">
+            <h3 class="text-lg font-bold text-[#5a1620]">4.5 BHK Penthouse</h3>
+            <p class="text-sm text-gray-500">3200 Sq. Ft.</p>
         </div>
-
-        <div class="absolute inset-0 bg-[#5a1620]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+        <div class="absolute inset-0 bg-[#5a1620]/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
           <button onclick="openModal()" class="bg-yellow-500 hover:bg-white hover:text-[#5a1620] text-[#3b0d14] font-bold py-3 px-6 rounded-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-xl">
             View Floor Plan
           </button>
@@ -282,7 +392,7 @@
 
     <div class="grid lg:grid-cols-3 gap-8">
       <!-- Location List -->
-      <div class="bg-white p-8 rounded-xl shadow-lg lg:col-span-1">
+      <div class="bg-white p-8 rounded-xl shadow-lg lg:col-span-1 border-t-4 border-yellow-500">
         <h3 class="text-xl font-bold text-[#5a1620] mb-6 flex items-center gap-2">
           <span class="text-2xl">📍</span> Nearby Landmarks
         </h3>
@@ -325,14 +435,10 @@
             </div>
           </li>
         </ul>
-        
-        <!-- <button onclick="openModal()" class="w-full mt-8 border border-[#5a1620] text-[#5a1620] py-2 rounded font-semibold hover:bg-[#5a1620] hover:text-white transition-colors">
-            Download Location Map
-        </button> -->
       </div>
 
       <!-- Google Map -->
-      <div class="lg:col-span-2 rounded-xl overflow-hidden shadow-lg h-[400px] lg:h-auto relative">
+      <div class="lg:col-span-2 rounded-xl overflow-hidden shadow-lg h-[400px] lg:h-auto relative bg-gray-200">
         <iframe 
           src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14245.87327140785!2d81.001374!3d26.793213!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399be3737835c249%3A0xd643ea0674ab903b!2sORO%20Constella!5e0!3m2!1sen!2sus!4v1767945497960!5m2!1sen!2sus" 
           width="100%" 
@@ -342,10 +448,6 @@
           loading="lazy" 
           referrerpolicy="no-referrer-when-downgrade">
         </iframe>
-        <!-- Instructions to change map -->
-        <div class="absolute bottom-0 left-0 bg-white/80 p-2 text-[10px] text-gray-500 backdrop-blur-sm">
-           * Replace src in iframe with your Google Maps Embed Link
-        </div>
       </div>
     </div>
   </div>
@@ -363,62 +465,69 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      
       <!-- Image 1 -->
       <div class="group relative h-64 overflow-hidden rounded-lg shadow-md cursor-pointer">
-        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2053&auto=format&fit=crop" 
+        <!-- Reverted to livingroom.png -->
+        <img src="livingroom.png" 
              alt="Luxury Living Room" 
              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
-        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
             <span class="text-white border border-white px-4 py-1 rounded-full text-sm">Living Room</span>
         </div>
       </div>
 
       <!-- Image 2 -->
       <div class="group relative h-64 overflow-hidden rounded-lg shadow-md cursor-pointer">
-        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070&auto=format&fit=crop" 
+        <!-- Reverted to Exterior.png -->
+        <img src="Exterior.png" 
              alt="Exterior View" 
              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
-        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
             <span class="text-white border border-white px-4 py-1 rounded-full text-sm">Exterior</span>
         </div>
       </div>
 
       <!-- Image 3 -->
       <div class="group relative h-64 overflow-hidden rounded-lg shadow-md cursor-pointer">
-        <img src="https://www.bca-furnished-apartments.com/wp-content/uploads/2020/02/03.03HS-cp-Corporate-Apartments-Atlanta-Fully-Equipped-Modern-Kitchen-Chic-Premium-Studios-on-25th_0818_20_43.jpg" 
+        <!-- Reverted to kitchen.png -->
+        <img src="kitchen.png" 
              alt="Kitchen" 
              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
-        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
             <span class="text-white border border-white px-4 py-1 rounded-full text-sm">Kitchen</span>
         </div>
       </div>
 
       <!-- Image 4 -->
       <div class="group relative h-64 overflow-hidden rounded-lg shadow-md cursor-pointer">
-        <img src="https://images.unsplash.com/photo-1613545325278-f24b0cae1224?q=80&w=2070&auto=format&fit=crop" 
+        <!-- Reverted to bedroom.png -->
+        <img src="bedroom.png" 
              alt="Bedroom" 
              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
-        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
             <span class="text-white border border-white px-4 py-1 rounded-full text-sm">Bedroom</span>
         </div>
       </div>
 
       <!-- Image 5 -->
       <div class="group relative h-64 overflow-hidden rounded-lg shadow-md cursor-pointer">
-        <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=2070&auto=format&fit=crop" 
+        <!-- Reverted to swimingpool.png -->
+        <img src="swimingpool.png" 
              alt="Pool Side" 
              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
-        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
             <span class="text-white border border-white px-4 py-1 rounded-full text-sm">Pool Deck</span>
         </div>
       </div>
 
       <!-- Image 6 -->
       <div class="group relative h-64 overflow-hidden rounded-lg shadow-md cursor-pointer">
-        <img src="https://images.unsplash.com/photo-1481437156560-3205f6a55735?q=80&w=1995&auto=format&fit=crop" 
+        <!-- Reverted to flat3.png -->
+        <img src="flat3.png" 
              alt="Lobby" 
              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
-        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
             <span class="text-white border border-white px-4 py-1 rounded-full text-sm">Grand Lobby</span>
         </div>
       </div>
@@ -427,107 +536,250 @@
 </section>
 
 <!-- ================= ENQUIRE FORM ================= -->
-<section class="bg-gradient-to-r from-[#3b0d14] to-[#5a1620] py-20">
-  <div class="max-w-4xl mx-auto px-6 text-center">
+<section class="bg-gradient-to-r from-[#3b0d14] to-[#5a1620] py-20 relative overflow-hidden">
+  <!-- Decorative Circle -->
+  <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+  <div class="absolute bottom-0 left-0 w-48 h-48 bg-yellow-500/10 rounded-full translate-y-1/2 -translate-x-1/2"></div>
+
+  <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
     <h2 class="text-3xl font-bold text-yellow-400 mb-2">
       Interested in Oro Constella?
     </h2>
     <p class="text-gray-300 mb-8">Leave your details below and our team will get back to you shortly.</p>
 
-    <form id="enquiry-form" class="bg-white p-8 rounded-xl shadow-2xl max-w-2xl mx-auto">
-      <div class="grid md:grid-cols-2 gap-4 mb-4">
-        <input type="text" name="Name" class="w-full border border-gray-300 p-3 rounded focus:outline-none focus:border-[#5a1620]" placeholder="Name" required/>
-        <input type="tel" name="Phone" class="w-full border border-gray-300 p-3 rounded focus:outline-none focus:border-[#5a1620]" placeholder="Phone" required/>
-      </div>
-      <input type="email" name="Email" class="w-full border border-gray-300 p-3 rounded mb-6 focus:outline-none focus:border-[#5a1620]" placeholder="Email Address (Optional)"/>
+    <form id="enquiry-form" class="bg-white p-8 rounded-xl shadow-2xl max-w-2xl mx-auto text-left">
 
-      <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-600 text-[#3b0d14] font-bold py-3 rounded-md transition-colors text-lg">
+      <div class="grid md:grid-cols-2 gap-6 mb-6">
+
+        <!-- Name (Fixed Label) -->
+        <div class="relative group">
+          <input
+            type="text"
+            name="Name"
+            id="enq-name"
+            required
+            placeholder=" "
+            class="peer w-full border border-gray-300 p-3 rounded bg-transparent
+                   focus:outline-none focus:border-[#5a1620] focus:ring-1 focus:ring-[#5a1620]"
+          />
+          <label
+            for="enq-name"
+            class="absolute left-3 -top-2.5 bg-white px-1 transition-all duration-200 pointer-events-none
+                   text-xs text-[#5a1620] font-medium
+                   peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:font-normal
+                   peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-[#5a1620] peer-focus:font-medium">
+            Name*
+          </label>
+        </div>
+
+        <!-- Phone (Fixed Label) -->
+        <div class="relative group">
+          <input
+            type="tel"
+            name="Phone"
+            id="enq-phone"
+            required
+            placeholder=" "
+            class="peer w-full border border-gray-300 p-3 rounded bg-transparent
+                   focus:outline-none focus:border-[#5a1620] focus:ring-1 focus:ring-[#5a1620]"
+          />
+          <label
+            for="enq-phone"
+            class="absolute left-3 -top-2.5 bg-white px-1 transition-all duration-200 pointer-events-none
+                   text-xs text-[#5a1620] font-medium
+                   peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:font-normal
+                   peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-[#5a1620] peer-focus:font-medium">
+            Phone*
+          </label>
+        </div>
+
+      </div>
+
+      <!-- Email (Fixed Label) -->
+      <div class="relative mb-8 group">
+        <input
+          type="email"
+          name="Email"
+          id="enq-email"
+          placeholder=" "
+          class="peer w-full border border-gray-300 p-3 rounded bg-transparent
+                 focus:outline-none focus:border-[#5a1620] focus:ring-1 focus:ring-[#5a1620]"
+        />
+        <label
+          for="enq-email"
+          class="absolute left-3 -top-2.5 bg-white px-1 transition-all duration-200 pointer-events-none
+                   text-xs text-[#5a1620] font-medium
+                   peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:font-normal
+                   peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-[#5a1620] peer-focus:font-medium">
+          Email Address*
+        </label>
+      </div>
+
+      <!-- Button -->
+      <button
+        type="submit"
+        class="w-full bg-yellow-500 hover:bg-yellow-600 text-[#3b0d14]
+               font-bold py-3 rounded-md transition-colors text-lg shadow-md">
         Submit Enquiry
       </button>
+
     </form>
+
   </div>
 </section>
 
 <!-- ================= FOOTER ================= -->
-<footer class="bg-[#2a090e] text-white py-12 border-t border-white/10">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="grid md:grid-cols-3 gap-8 items-center">
-      
-      <!-- Brand / QR -->
-      <!-- <div class="flex items-center gap-4"> -->
-        <!-- QR Code Placeholder -->
-        <!-- <div class="bg-white p-2 rounded">
-           <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=OroConstella" alt="QR Code" class="w-20 h-20"/>
-        </div>
-        <div>
-           <h4 class="font-bold text-lg">ORO CONSTELLA</h4>
-           <p class="text-xs text-gray-400">Scan to save contact</p>
-        </div>
-      </div> -->
+<footer class="bg-gradient-to-r from-[#3b0d14] to-[#5a1620] text-white border-t border-yellow-500/20">
+  <div class="max-w-7xl mx-auto px-6 py-14">
 
-      <!-- Contact -->
-      <div class="text-center">
-        <p class="text-lg font-semibold text-yellow-400 mb-1">Contact Us</p>
-        <p class="text-2xl font-bold">📞 +91 8604336027</p>
-        <p class="text-sm text-gray-400 mt-2">sales@oroconstella.com</p>
-      </div>
+    <!-- Top Grid -->
+    <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-10">
 
-      <!-- Legal -->
-      <div class="text-right">
-        <!-- <p class="text-sm text-gray-300 mb-1">
-          RERA: <span class="text-yellow-400 font-mono">UPRERAPB1297814</span>
-        </p> -->
-        <p class="text-sm text-gray-400 leading-tight">
-          Branch: SBI Gomti Nagar Ext.<br/>
-          Lucknow, Uttar Pradesh
+      <!-- Brand -->
+      <div class="lg:col-span-1">
+        <div class="flex items-center gap-3 mb-4">
+            <!-- Reverted to original local logo image -->
+            <img src="logo.png"
+               alt="Oro Constella Logo"
+               class="w-12 h-12 object-contain"/>
+          <div>
+            <h3 class="text-lg font-bold tracking-wide leading-tight">
+              ORO CONSTELLA
+            </h3>
+            <p class="text-[10px] text-yellow-400 uppercase tracking-wider">
+              Preferred Partner
+            </p>
+          </div>
+        </div>
+
+        <p class="text-sm text-yellow-100/80 leading-relaxed">
+          Premium luxury residences at Sushant Golf City, Lucknow.
+          Designed for refined urban living with world-class amenities.
         </p>
       </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="font-semibold text-lg mb-4 text-yellow-400">Quick Links</h4>
+        <ul class="space-y-2 text-sm text-yellow-100/80">
+          <li><a href="#about" class="hover:text-yellow-300 transition-colors">About Project</a></li>
+          <li><a href="#floor-plans" class="hover:text-yellow-300 transition-colors">Floor Plans</a></li>
+          <li><a href="#location" class="hover:text-yellow-300 transition-colors">Location</a></li>
+          <li><a href="#gallery" class="hover:text-yellow-300 transition-colors">Gallery</a></li>
+        </ul>
+      </div>
+
+      <!-- Business Hours -->
+      <div>
+        <h4 class="font-semibold text-lg mb-4 text-yellow-400">Sales Office</h4>
+        <p class="text-sm text-yellow-100/80 mb-2 flex items-center gap-2"><i class="far fa-clock"></i> Mon–Sat | 10:30 AM – 6:30 PM</p>
+        <p class="text-sm text-yellow-100/80 flex items-center gap-2"><i class="fas fa-map-marker-alt"></i> Sushant Golf City, Lucknow</p>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="font-semibold text-lg mb-4 text-yellow-400">Contact Us</h4>
+        <p class="text-sm text-yellow-100/80 mb-2 hover:text-white"><a href="tel:+918353944324">📞 +91-8353944324</a></p>
+        <p class="text-sm text-yellow-100/80 mb-4 hover:text-white"><a href="mailto:contact@oroconstella.in">✉️ contact@oroconstella.in</a></p>
+
+        <!-- Social Icons -->
+        <div class="flex gap-3">
+             <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-yellow-500 hover:text-[#3b0d14] transition"><i class="fab fa-facebook-f"></i></a>
+             <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-yellow-500 hover:text-[#3b0d14] transition"><i class="fab fa-instagram"></i></a>
+             <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-yellow-500 hover:text-[#3b0d14] transition"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
     </div>
-    
-    <div class="mt-10 pt-6 border-t border-white/10 text-center text-xs text-gray-500">
-        &copy; 2024 Oro Constella. All rights reserved. | Privacy Policy
+
+    <!-- Divider -->
+    <div class="border-t border-white/10 my-10"></div>
+
+    <!-- Bottom Section -->
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+
+      <!-- Trust Badges -->
+      <div class="flex flex-wrap justify-center gap-4 items-center text-xs md:text-sm">
+        <div class="px-4 py-2 rounded-md bg-white/5 border border-white/10">RERA Approved</div>
+        <div class="px-4 py-2 rounded-md bg-white/5 border border-white/10">Premium Construction</div>
+        <div class="px-4 py-2 rounded-md bg-white/5 border border-white/10">Trusted Developer</div>
+      </div>
+
+      <!-- Copyright -->
+      <div class="text-xs text-yellow-100/70 text-center md:text-right">
+        © 2026 Oro Constella. All Rights Reserved.
+      </div>
+
     </div>
+
   </div>
 </footer>
 
 <!-- ================= MODAL POPUP ================= -->
-<div id="enquireModal" class="fixed inset-0 z-[100] hidden">
+<div id="enquireModal" class="fixed inset-0 z-[100] hidden transition-opacity duration-300">
   <!-- Backdrop -->
   <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="closeModal()"></div>
   
   <!-- Modal Content -->
-  <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white w-full max-w-md p-6 rounded-xl shadow-2xl m-4">
-    <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 text-2xl">&times;</button>
+  <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white w-[90%] max-w-md p-8 rounded-xl shadow-2xl">
+    <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-[#5a1620] text-2xl transition-colors">&times;</button>
     
-    <h3 class="text-2xl font-bold text-[#5a1620] mb-2">Enquire Now</h3>
-    <p class="text-gray-600 mb-6 text-sm">Please fill your details to know more.</p>
+    <div class="text-center mb-6">
+        <h3 class="text-2xl font-bold text-[#5a1620] mb-2">Enquire Now</h3>
+        <p class="text-gray-600 text-sm">Fill details to unlock pricing & brochures.</p>
+        <div class="w-16 h-1 bg-yellow-500 mx-auto mt-2"></div>
+    </div>
     
-    <form id="modal-form" class="space-y-4">
-      <div>
-        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Name</label>
-        <input type="text" name="Name" class="w-full border border-gray-300 p-2 rounded focus:border-[#5a1620] outline-none" required>
+    <form id="modal-form" class="space-y-6">
+      
+      <!-- Modal Name -->
+      <div class="relative group">
+        <input type="text" name="Name" id="modal-name" class="peer w-full border border-gray-300 p-3 rounded focus:border-[#5a1620] outline-none" placeholder=" " required>
+        <label for="modal-name" 
+               class="absolute left-3 -top-2.5 bg-white px-1 transition-all duration-200 pointer-events-none
+                   text-xs text-[#5a1620] font-medium
+                   peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:font-normal
+                   peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-[#5a1620] peer-focus:font-medium">
+            Name*
+        </label>
       </div>
-      <div>
-        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Phone Number</label>
-        <input type="tel" name="Phone" class="w-full border border-gray-300 p-2 rounded focus:border-[#5a1620] outline-none" required>
+
+      <!-- Modal Phone -->
+      <div class="relative group">
+        <input type="tel" name="Phone" id="modal-phone" class="peer w-full border border-gray-300 p-3 rounded focus:border-[#5a1620] outline-none" placeholder=" " required>
+        <label for="modal-phone" 
+               class="absolute left-3 -top-2.5 bg-white px-1 transition-all duration-200 pointer-events-none
+                   text-xs text-[#5a1620] font-medium
+                   peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:font-normal
+                   peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-[#5a1620] peer-focus:font-medium">
+            Phone Number*
+        </label>
       </div>
-      <button type="submit" class="w-full bg-[#5a1620] text-white py-3 rounded font-bold hover:bg-[#3b0d14] transition-colors">
-        View Now
+
+      <button type="submit" class="w-full bg-[#5a1620] text-white py-3 rounded font-bold hover:bg-[#3b0d14] transition-colors shadow-lg">
+        Request Callback
       </button>
     </form>
   </div>
 </div>
 
-<a href="tel:+918604336027"
-        class="fixed bottom-6 left-6 z-50 bg-green-600 text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform flex items-center justify-center w-14 h-14"
-        title="Call Us" aria-label="Call Us">
-        <i class="fas fa-phone text-xl"></i>
+<!-- ================= STICKY CONTACT ICONS ================= -->
+<div class="fixed bottom-6 left-6 z-40 group">
+    <a href="tel:+918353944324"
+       class="bg-blue-600 text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform flex items-center justify-center w-14 h-14"
+       title="Call Us">
+        <i class="fas fa-phone text-xl animate-pulse"></i>
     </a>
-    <a href="https://wa.me/918604336027"
-        class="fixed bottom-6 right-6 z-50 bg-green-500 text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform flex items-center justify-center w-14 h-14"
-        title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
+</div>
+
+<div class="fixed bottom-6 right-6 z-40 group">
+    <a href="https://wa.me/918353944324"
+       class="bg-green-500 text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform flex items-center justify-center w-14 h-14"
+       title="Chat on WhatsApp">
         <i class="fab fa-whatsapp text-3xl"></i>
     </a>
+</div>
+
 
 <script>
   function openModal() {
@@ -587,6 +839,5 @@
       }
   });
 </script>
-
 </body>
 </html>
